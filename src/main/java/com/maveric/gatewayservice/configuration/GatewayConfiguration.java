@@ -40,7 +40,7 @@ public class GatewayConfiguration {
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route("authentication-authorization-service",
-                        r -> r.path(authServicePath).uri(authServiceUri))
+                        r -> r.path(authServicePath,"/api/v1/hello").uri(authServiceUri))
                 .route("user-service",
                         r -> r.path(userServicePath).uri(userServiceUri))
                 .route("account-service",
