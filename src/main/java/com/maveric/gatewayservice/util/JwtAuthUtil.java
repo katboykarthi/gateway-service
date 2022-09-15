@@ -8,27 +8,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class JwtAuthUtil {
     @Value("${jwt.secret}")
-    private String SECRET_KEY;
+    private String secretKey;
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
+        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
     }
 
     public GateWayResponseDto validateToken(String token) {
         try {
-            Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token);
-            GateWayResponseDto gateWayResponseDto = new GateWayResponseDto(true,extractAllClaims(token));
-            return gateWayResponseDto;
-        } catch (SignatureException e) {
-            System.out.println("Invalid JWT signature trace: {}"+ e);
-        } catch (MalformedJwtException e) {
-            System.out.println("Invalid JWT token trace: {}"+ e);
-        } catch (ExpiredJwtException e) {
-            System.out.println("Expired JWT token trace: {}"+ e);
-        } catch (UnsupportedJwtException e) {
-            System.out.println("Unsupported JWT token trace: {}"+ e);
-        } catch (IllegalArgumentException e) {
-            System.out.println("JWT token compact of handler are invalid trace: {}"+e);
+            Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
+            return new GateWayResponseDto(true,extractAllClaims(token));
+        } catch (SignatureException | MalformedJwtException | ExpiredJwtException | UnsupportedJwtException | IllegalArgumentException e) {
+            e.printStackTrace();
         }
         return new GateWayResponseDto(false,null);
     }

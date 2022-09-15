@@ -2,7 +2,6 @@ package com.maveric.gatewayservice.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maveric.gatewayservice.dto.ErrorDto;
-import com.maveric.gatewayservice.dto.GateWayRequestDto;
 import com.maveric.gatewayservice.dto.GateWayResponseDto;
 import com.maveric.gatewayservice.util.JwtAuthUtil;
 import io.jsonwebtoken.Claims;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-import java.util.Arrays;
 
 @RefreshScope
 @Component
@@ -42,15 +40,11 @@ public class JwtAuthFilter implements GatewayFilter {
             if (this.isAuthMissing(request))
                 return this.onError(exchange, "Authorization header is missing in request", HttpStatus.UNAUTHORIZED);
 
-            final String token = this.getAuthHeader(request);
-            System.out.println("Token->"+token);
-            String tokenn = token.substring(7);
-            System.out.println("Token->"+tokenn);
-            GateWayRequestDto gateWayRequestDto = new GateWayRequestDto(token);
+            final String raw_token = this.getAuthHeader(request);
+            String token = raw_token.substring(7);
 
             try {
-                GateWayResponseDto gateWayResponseDto = validateToken(tokenn);
-                System.out.println("gateWayResponseDto->"+gateWayResponseDto.isResponse()+"--"+gateWayResponseDto.getClaims());
+                GateWayResponseDto gateWayResponseDto = validateToken(token);
                 if (!gateWayResponseDto.isResponse())
                     return this.onError(exchange, "Authorization header is invalid", HttpStatus.UNAUTHORIZED);
 
@@ -75,7 +69,7 @@ public class JwtAuthFilter implements GatewayFilter {
             response.getHeaders().add("Content-Type", "application/json");
             ErrorDto errorDto = new ErrorDto(String.valueOf(httpStatus.value()), err);
             byte[] byteData = objectMapper.writeValueAsBytes(errorDto);
-            return response.writeWith(Mono.just(byteData).map(t -> dataBufferFactory.wrap(t)));
+            return response.writeWith(Mono.just(byteData).map(dataBufferFactory::wrap));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,13 +94,10 @@ public class JwtAuthFilter implements GatewayFilter {
 
     private GateWayResponseDto validateToken(String token) {
         try {
-            GateWayResponseDto responseEntity = jwtAuthUtil.validateToken(token);
-            System.out.println("Success Validation of token->"+responseEntity.isResponse());
-            return responseEntity;
+            return jwtAuthUtil.validateToken(token);
         }
         catch (Exception e)
         {
-            System.out.println("Exception with feign !! -> "+e);
             return new GateWayResponseDto();
         }
 
