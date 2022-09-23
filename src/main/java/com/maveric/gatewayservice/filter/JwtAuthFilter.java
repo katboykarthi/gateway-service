@@ -5,6 +5,7 @@ import com.maveric.gatewayservice.dto.ErrorDto;
 import com.maveric.gatewayservice.dto.GateWayResponseDto;
 import com.maveric.gatewayservice.util.JwtAuthUtil;
 import io.jsonwebtoken.Claims;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
@@ -22,6 +23,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class JwtAuthFilter implements GatewayFilter {
 
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(JwtAuthFilter.class);
     @Autowired
     private RouterValidator routerValidator;
 
@@ -35,7 +37,7 @@ public class JwtAuthFilter implements GatewayFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
-
+        log.info("API gateway passing through filter");
         if (routerValidator.isSecured.test(request)) {
             if (this.isAuthMissing(request))
                 return this.onError(exchange, "Authorization header is missing in request", HttpStatus.UNAUTHORIZED);
@@ -52,6 +54,7 @@ public class JwtAuthFilter implements GatewayFilter {
             }
             catch(Exception e)
             {
+                log.error("Exception in validating the token");
                 return this.onError(exchange, "Exception in validating the token", HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
@@ -69,6 +72,7 @@ public class JwtAuthFilter implements GatewayFilter {
             response.getHeaders().add("Content-Type", "application/json");
             ErrorDto errorDto = new ErrorDto(String.valueOf(httpStatus.value()), err);
             byte[] byteData = objectMapper.writeValueAsBytes(errorDto);
+            log.error("Filter blockage ->"+errorDto.getMessage());
             return response.writeWith(Mono.just(byteData).map(dataBufferFactory::wrap));
 
         } catch (Exception e) {
@@ -88,7 +92,8 @@ public class JwtAuthFilter implements GatewayFilter {
 
     private void populateRequestWithHeaders(ServerWebExchange exchange, Claims claims) {
         exchange.getRequest().mutate()
-                .header("id", String.valueOf(claims.get("sub")))
+                .header("userEmail", String.valueOf(claims.get("sub")))
+                .header("userId", String.valueOf(claims.get("jti")))
                 .build();
     }
 
