@@ -1,14 +1,11 @@
 package com.maveric.gatewayservice.configuration;
 
 import com.maveric.gatewayservice.filter.JwtAuthFilter;
-
 import org.springframework.beans.factory.annotation.Value;
-
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 
 
 @Configuration
@@ -58,5 +55,6 @@ public class GatewayConfiguration {
                         r -> r.path(transactionServicePath).filters(f -> f.filter(filter)).uri(transactionServiceUri))
                 .build();
     }
+
 
 }

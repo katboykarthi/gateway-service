@@ -72,11 +72,11 @@ public class JwtAuthFilter implements GatewayFilter {
             response.getHeaders().add("Content-Type", "application/json");
             ErrorDto errorDto = new ErrorDto(String.valueOf(httpStatus.value()), err);
             byte[] byteData = objectMapper.writeValueAsBytes(errorDto);
-            log.error("Filter blockage ->"+errorDto.getMessage());
+            log.error("Filter blockage ->{}",errorDto.getMessage());
             return response.writeWith(Mono.just(byteData).map(dataBufferFactory::wrap));
 
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Unexpected error-{}",e.getMessage());
 
         }
         return response.setComplete();
