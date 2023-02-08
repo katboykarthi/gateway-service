@@ -1,0 +1,1369 @@
+{
+	"info": {
+		"_postman_id": "f6edba87-9e32-4e7c-9cb1-e0a5659dcdb6",
+		"name": "Maveric-bank-APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22941554"
+	},
+	"item": [
+		{
+			"name": "transaction-service",
+			"item": [
+				{
+					"name": "getTransactions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3020/api/v1/accounts/63109b88bceb48112c948ae8/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createTransactions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"63109b88bceb48112c948ae8\",\r\n  \"type\": \"CREDIT\",\r\n  \"amount\": 2000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3020/api/v1/accounts/63109b88bceb48112c948ae8/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTransactionById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW1AZ21haWwuY29tIiwiZXhwIjoxNjYxOTU0Njg4LCJpYXQiOjE2NjE5MTg2ODh9.-klYMTJPw_RH_TN-cgYDpcgxJ4s2hEyKNoniIJWiDPc",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3020/api/v1/accounts/63109b88bceb48112c948ae8/transactions/6310a119b9bffc68d97eeb20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"transactions",
+								"6310a119b9bffc68d97eeb20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTransactionByAccountId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3020/api/v1/accounts/63109b88bceb48112c948ae8/transaction",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3020",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "account-service",
+			"item": [
+				{
+					"name": "getAccounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3010/api/v1/customers/261e58a1-79a0-4d60-8553-9c9c27fbf70d/accounts",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createAccount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"type\": \"CURRENT\",\r\n  \"customerId\": \"261e58a1-79a0-4d60-8553-9c9c27fbf70d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3010/api/v1/customers/261e58a1-79a0-4d60-8553-9c9c27fbf70d/accounts",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAccountDetailsById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3010/api/v1/customers/261e58a1-79a0-4d60-8553-9c9c27fbf70d/accounts/63109b88bceb48112c948ae8",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+								"accounts",
+								"63109b88bceb48112c948ae8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteAccountById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3010/api/v1/customers/261e58a1-79a0-4d60-8553-9c9c27fbf70d/accounts/63109b88bceb48112c948ae8",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+								"accounts",
+								"63109b88bceb48112c948ae8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAccountById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"type\": \"CURRENT\",\r\n  \"customerId\": \"261e58a1-79a0-4d60-8553-9c9c27fbf70d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3010/api/v1/customers/261e58a1-79a0-4d60-8553-9c9c27fbf70d/accounts/63109b88bceb48112c948ae8",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+								"accounts",
+								"63109b88bceb48112c948ae8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "balance-service",
+			"item": [
+				{
+					"name": "getBalances",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3015/api/v1/accounts/63109b88bceb48112c948ae8/balances",
+							"host": [
+								"localhost"
+							],
+							"port": "3015",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"balances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createBalance",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"amount\": 3000,\r\n  \"currency\": \"INR\",\r\n  \"accountId\": \"63109b88bceb48112c948ae8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3015/api/v1/accounts/63109b88bceb48112c948ae8/balances",
+							"host": [
+								"localhost"
+							],
+							"port": "3015",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"balances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBalanceById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3015/api/v1/accounts/63109b88bceb48112c948ae8/balances/63109e19b483e849da94aa73",
+							"host": [
+								"localhost"
+							],
+							"port": "3015",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"balances",
+								"63109e19b483e849da94aa73"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBalance",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"amount\": 2000,\r\n  \"currency\": \"INR\",\r\n  \"accountId\": \"63109b88bceb48112c948ae8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3015/api/v1/accounts/63109b88bceb48112c948ae8/balances/63109e19b483e849da94aa73",
+							"host": [
+								"localhost"
+							],
+							"port": "3015",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"balances",
+								"63109e19b483e849da94aa73"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteBalance",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3015/api/v1/accounts/63109b88bceb48112c948ae8/balances/63109e19b483e849da94aa73",
+							"host": [
+								"localhost"
+							],
+							"port": "3015",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"balances",
+								"63109e19b483e849da94aa73"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user-service",
+			"item": [
+				{
+					"name": "getUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"string\",\r\n  \"lastName\": \"string\",\r\n  \"middleName\": \"string\",\r\n  \"phoneNumber\": \"string\",\r\n  \"email\": \"user@example.com\",\r\n  \"address\": \"string\",\r\n  \"dateOfBirth\": \"2022-09-01\",\r\n  \"gender\": \"MALE\",\r\n  \"password\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/api/v1/users/261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUserById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"string\",\r\n  \"lastName\": \"string\",\r\n  \"middleName\": \"string\",\r\n  \"phoneNumber\": \"string\",\r\n  \"email\": \"user@example.com\",\r\n  \"address\": \"string\",\r\n  \"dateOfBirth\": \"2022-09-01\",\r\n  \"gender\": \"MALE\",\r\n  \"_id\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/api/v1/users/261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3005/api/v1/users/261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth-service",
+			"item": [
+				{
+					"name": "helloMaveric",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/v1/hello",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"hello"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"email\": \"ram@gmail.com\",\r\n  \"password\": \"ram123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"string\",\r\n  \"lastName\": \"string\",\r\n  \"middleName\": \"string\",\r\n  \"phoneNumber\": \"string\",\r\n  \"email\": \"user@example.com\",\r\n  \"address\": \"string\",\r\n  \"dateOfBirth\": \"2022-09-01\",\r\n  \"gender\": \"MALE\",\r\n  \"password\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/auth/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "gateway-service",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/users/261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"string\",\r\n  \"lastName\": \"string\",\r\n  \"middleName\": \"string\",\r\n  \"phoneNumber\": \"string\",\r\n  \"email\": \"user@example.com\",\r\n  \"address\": \"string\",\r\n  \"dateOfBirth\": \"2022-09-01\",\r\n  \"gender\": \"MALE\",\r\n  \"password\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/auth/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"email\": \"ram@gmail.com\",\r\n  \"password\": \"ram123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "helloMaveric",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW1AZ21haWwuY29tIiwiZXhwIjoxNjYyMDkzMTk4LCJpYXQiOjE2NjIwNTcxOTh9.4okAA-AORIzyWZbSJ4HokJo7rAny3dVKoWFrojC9ZRI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/hello",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"hello"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUsers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYW5lc2hAZ21haWwuY29tIiwiZXhwIjoxNjY3ODg4Mzk1LCJpYXQiOjE2Njc4ODc5NzUsImp0aSI6IjJjNDM4Mzk3LTg1ODktNGQ1ZC05MGRjLWExNTgwYTI2MmY1YiJ9.VDAdMQ7bd1s2kcnlEoo_EYrUYF189eogRFRU5YjL6xQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "userEmail",
+								"value": "karthickpm@maveric-systems.com",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"string\",\r\n  \"lastName\": \"string\",\r\n  \"middleName\": \"string\",\r\n  \"phoneNumber\": \"string\",\r\n  \"email\": \"user@example.com\",\r\n  \"address\": \"string\",\r\n  \"dateOfBirth\": \"2022-09-01\",\r\n  \"gender\": \"MALE\",\r\n  \"password\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/users/261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUserById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"string\",\r\n  \"lastName\": \"string\",\r\n  \"middleName\": \"string\",\r\n  \"phoneNumber\": \"string\",\r\n  \"email\": \"user@example.com\",\r\n  \"address\": \"string\",\r\n  \"dateOfBirth\": \"2022-09-01\",\r\n  \"gender\": \"MALE\",\r\n  \"_id\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/api/v1/users/261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/users/261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAccounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/customers/261e58a1-79a0-4d60-8553-9c9c27fbf70d/accounts",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createAccount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"type\": \"CURRENT\",\r\n  \"customerId\": \"261e58a1-79a0-4d60-8553-9c9c27fbf70d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/customers/261e58a1-79a0-4d60-8553-9c9c27fbf70d/accounts",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAccountDetailsById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/customers/261e58a1-79a0-4d60-8553-9c9c27fbf70d/accounts/63109b88bceb48112c948ae8",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+								"accounts",
+								"63109b88bceb48112c948ae8"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getAccountDetailsById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/api/v1/customers/ddfedf4a-ed58-4a5b-b562-824ce542f39c/accounts/632349c04693cd7779201908",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"customers",
+										"ddfedf4a-ed58-4a5b-b562-824ce542f39c",
+										"accounts",
+										"632349c04693cd7779201908"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 15 Sep 2022 15:53:43 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"632349c04693cd7779201908\",\n    \"customerId\": \"ddfedf4a-ed58-4a5b-b562-824ce542f39c\",\n    \"type\": \"CURRENT\",\n    \"createdAt\": \"2022-09-15T21:20:24.435\",\n    \"updatedAt\": \"2022-09-15T21:20:24.437\",\n    \"balance\": {\n        \"_id\": \"63234a0eb95ecf45ac7daf90\",\n        \"accountId\": \"632349c04693cd7779201908\",\n        \"amount\": 5000,\n        \"currency\": \"INR\",\n        \"createdAt\": \"2022-09-15T21:21:42.863\",\n        \"updatedAt\": \"2022-09-15T21:22:44.437\"\n    },\n    \"transactions\": [\n        {\n            \"_id\": \"63234a3eb18b8462bb684d24\",\n            \"accountId\": \"632349c04693cd7779201908\",\n            \"type\": \"DEBIT\",\n            \"amount\": 1000,\n            \"createdAt\": \"2022-09-15T21:22:30.833\"\n        },\n        {\n            \"_id\": \"63234a4cb18b8462bb684d25\",\n            \"accountId\": \"632349c04693cd7779201908\",\n            \"type\": \"CREDIT\",\n            \"amount\": 3000,\n            \"createdAt\": \"2022-09-15T21:22:44.403\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "deleteAccountById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/customers/261e58a1-79a0-4d60-8553-9c9c27fbf70d/accounts/63109b88bceb48112c948ae8",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+								"accounts",
+								"63109b88bceb48112c948ae8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAccountById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"type\": \"CURRENT\",\r\n  \"customerId\": \"261e58a1-79a0-4d60-8553-9c9c27fbf70d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/customers/261e58a1-79a0-4d60-8553-9c9c27fbf70d/accounts/63109b88bceb48112c948ae8",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"261e58a1-79a0-4d60-8553-9c9c27fbf70d",
+								"accounts",
+								"63109b88bceb48112c948ae8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBalances",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/accounts/63109b88bceb48112c948ae8/balances",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"balances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createBalance",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"amount\": 3000,\r\n  \"currency\": \"INR\",\r\n  \"accountId\": \"63109b88bceb48112c948ae8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/accounts/63109b88bceb48112c948ae8/balances",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"balances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBalanceById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/accounts/63109b88bceb48112c948ae8/balances/63109e19b483e849da94aa73",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"balances",
+								"63109e19b483e849da94aa73"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBalance",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"amount\": 2000,\r\n  \"currency\": \"INR\",\r\n  \"accountId\": \"63109b88bceb48112c948ae8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/accounts/63109b88bceb48112c948ae8/balances/63109e19b483e849da94aa73",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"balances",
+								"63109e19b483e849da94aa73"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteBalance",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/accounts/63109b88bceb48112c948ae8/balances/63109e19b483e849da94aa73",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"balances",
+								"63109e19b483e849da94aa73"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTransactions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW1AZ21haWwuY29tIiwiZXhwIjoxNjYyNTg1NzY4LCJpYXQiOjE2NjI1NDk3Njh9.HIW6zKD8CxWFfpsGHAdLDJWz25-Bdx7Yvwk1_C_lWV0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/accounts/63109b88bceb48112c948ae8/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createTransaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountId\": \"63109b88bceb48112c948ae8\",\r\n  \"type\": \"CREDIT\",\r\n  \"amount\": 2000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/accounts/63109b88bceb48112c948ae8/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTransactionById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/accounts/63109b88bceb48112c948ae8/transactions/6310a119b9bffc68d97eeb20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"transactions",
+								"6310a119b9bffc68d97eeb20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTransactionByAccountId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/accounts/63109b88bceb48112c948ae8/transaction",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"accounts",
+								"63109b88bceb48112c948ae8",
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
